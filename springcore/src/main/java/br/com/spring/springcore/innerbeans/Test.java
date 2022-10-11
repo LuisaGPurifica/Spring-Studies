@@ -12,6 +12,12 @@ public class Test {
 		Employee employee = (Employee) ctx.getBean("employee");
 		System.out.println(employee.getId());
 		System.out.println(employee.getAddress());
+		System.out.println(employee.hashCode());
+		
+		Employee employee2 = (Employee) ctx.getBean("employee");
+		System.out.println(employee2.getId());
+		System.out.println(employee2.getAddress());
+		System.out.println(employee2.hashCode());
 				
 	}
 
