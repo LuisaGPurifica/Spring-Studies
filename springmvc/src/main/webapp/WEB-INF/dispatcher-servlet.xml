@@ -12,9 +12,20 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+	<context:component-scan
+		base-package="br.com.spring.springmvc.controller" />
+
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		name="" />
+		name="viewResolver">
 
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+
+	</bean>
 
 </beans>
