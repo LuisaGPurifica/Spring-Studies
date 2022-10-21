@@ -1,6 +1,6 @@
 package br.com.spring.springorm.dao.impl;
 
-import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.spring.springorm.dao.ProductDAO;
 import br.com.spring.springorm.entity.Product;
 
-@Component
+@Component("productDAO")
 public class ProductDAOImpl implements ProductDAO {
 
 	@Autowired
@@ -21,6 +21,30 @@ public class ProductDAOImpl implements ProductDAO {
 	public int create(Product product) {
 		Integer result = (Integer) hibernateTemplate.save(product);
 		return result;
+	}
+
+	@Override
+	@Transactional
+	public void update(Product product) {
+		hibernateTemplate.update(product);
+	}
+
+	@Override
+	@Transactional
+	public void delete(Product product) {
+		hibernateTemplate.delete(product);
+	}
+
+	@Override
+	public Product find(int id) {
+		Product product = hibernateTemplate.get(Product.class, id);
+		return product;
+	}
+
+	@Override
+	public List<Product> findAll() {
+		List<Product> loadAll = hibernateTemplate.loadAll(Product.class);
+		return loadAll;
 	}
 
 }

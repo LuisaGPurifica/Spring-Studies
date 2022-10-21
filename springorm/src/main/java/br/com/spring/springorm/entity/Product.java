@@ -18,11 +18,19 @@ public class Product {
 	@Column(name = "price")
 	private double price;
 
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", desc=" + desc + ", price=" + price + "]";
+	}
+
 	public Product(int id, String name, String desc, double price) {
 		this.id = id;
 		this.name = name;
 		this.desc = desc;
 		this.price = price;
+	}
+
+	public Product() {
 	}
 
 	public int getId() {
